@@ -12,7 +12,7 @@ function App() {
   return (
     <div className="App">
       <Container maxWidth="lg">
-        <AppBar className={classes.appbar} position="static" color="primary" >
+        <AppBar className={classes.appbar} position="static" color="inherit" >
           <Typography className={classes.heading} variant="h2" align="center">
             Sudents Create and show
           </Typography>
