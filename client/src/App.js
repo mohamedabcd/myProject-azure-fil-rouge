@@ -11,10 +11,10 @@ function App() {
   const classes = makeStyles();
   return (
     <div className="App">
-      <Container maxWidth="lg">
-        <AppBar className={classes.appbar} position="static" color="inherit" >
+      <Container maxWidth="xl">
+        <AppBar className={classes.appbar} position="static" color="inherit"  >
           <Typography className={classes.heading} variant="h2" align="center">
-            Sudents Create and show
+            Dashboard Students
           </Typography>
         </AppBar>
         <Grow in>
@@ -25,8 +25,8 @@ function App() {
                   <Student/>
                 </AppBar>
               </Grid>
-              <Grid item xs={12} sm={4}>
-              <AppBar className={classes.appBar} position="static" color="inherit">
+              <Grid item xs={11} sm={3}>
+              <AppBar className={classes.appBarInput} position="static" color="inherit">
                   <CreateStudent/>
                 </AppBar>
               </Grid>
@@ -34,6 +34,7 @@ function App() {
           </Container>
         </Grow>
       </Container>
+
     </div>
   );
 }
