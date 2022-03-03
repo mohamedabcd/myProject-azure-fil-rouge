@@ -9,6 +9,7 @@ export default makeStyles(() => ({
         justifyContent: 'center',
         alignItems: 'center',
         marginBottom: '10rem',
+        color:'#42a5f5',
         
 
     }
