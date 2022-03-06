@@ -11,7 +11,7 @@ function App() {
   const classes = makeStyles();
   return (
     <div className="App">
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" className={classes.container}>
         <AppBar className={classes.appbar} position="static" color="inherit"  >
           <Typography className={classes.heading} variant="h2" align="center">
             Dashboard Students
@@ -25,7 +25,7 @@ function App() {
                   <Student/>
                 </AppBar>
               </Grid>
-              <Grid item xs={11} sm={3}>
+              <Grid item xs={11} sm={3} >
               <AppBar className={classes.appBarInput} position="static" color="inherit">
                   <CreateStudent/>
                 </AppBar>

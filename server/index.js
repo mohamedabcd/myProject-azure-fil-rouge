@@ -9,12 +9,14 @@ dotenv.config();
 
 const app = express();
 
+app.use(cors());
+
+app.use(express.json({limit: "20mb", extented:true}));
+app.use(express.urlencoded({limit: "20mb", extented:true}));
 
 app.use('/students', studentRoutes);
-app.use(bodyParser.json({limit: "20mb", extented:true}));
-app.use(bodyParser.urlencoded({limit: "20mb", extented:true}));
 
-app.use(cors());
+
 
 const CONNECTION_URL = process.env.MONGO_URI;
 
