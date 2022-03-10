@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import mongoose from 'mongoose';
 import cors from 'cors';
 import studentRoutes from './routes/student.js';
+
 dotenv.config();
 
 
