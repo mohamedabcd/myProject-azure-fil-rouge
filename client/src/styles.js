@@ -22,8 +22,11 @@ export default makeStyles(() => ({
         backgroundColor: " #8BC6EC",
         backgroundImage: "linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)",
         color:"white",
+       
         
     },
+
+   
 
     appBarInput:{
         
@@ -32,12 +35,15 @@ export default makeStyles(() => ({
 
     },
     form: {
-        margin: 'auto',
+        margin: '0 auto',
+        textAlign: 'center',
+        
     },
     root: {
         
         margin: '0 auto',
         textAlign: 'center',
+        
     }
   
     
