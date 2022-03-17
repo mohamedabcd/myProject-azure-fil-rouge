@@ -7,6 +7,7 @@ import makeStyles from '../../styles';
 
 
 
+
 function Home() {
   const classes = makeStyles();
   return (
@@ -34,6 +35,7 @@ function Home() {
           </Container>
         </Grow>
       </Container>
+  
 
     </div>
   );
