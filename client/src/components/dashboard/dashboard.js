@@ -11,7 +11,7 @@ import makeStyles from '../../styles';
 function Home() {
   const classes = makeStyles();
   return (
-    <div className="App">
+    <div className="container mt-4">
       <Container maxWidth="xl" className={classes.container}>
         <AppBar className={classes.appbar} position="static" color="inherit"  >
           <Typography className={classes.heading} variant="h2" align="center">

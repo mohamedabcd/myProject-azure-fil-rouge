@@ -19,8 +19,8 @@ export default makeStyles(() => ({
           
     },
     heading: {
-        backgroundColor: " #8BC6EC",
-        backgroundImage: "linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%)",
+        backgroundColor: " #166E92",
+        backgroundImage: "linear-gradient(135deg, #8BC6EC 0%, #166E92 100%)",
         color:"white",
        
         

@@ -2,6 +2,7 @@ import express from 'express';
 import mysql from 'mysql2';
 import dotenv from 'dotenv';
 import cors from 'cors';
+import path from 'path';
 // import { getStudents } from '../server/controllers/student.js';
 import studentRoutes from '../server/routes/student.js';
 
@@ -21,6 +22,7 @@ const db = mysql.createConnection({
 
 })
 
+
 db.connect((error) => {
     if(error){
         console.log(error);
@@ -29,7 +31,7 @@ db.connect((error) => {
     }
 })
 
-app.get('/auth', (req, res) => {
+app.get('/register', (req, res) => {
     res.send("<h1>Home Page</h1>")
 });
 

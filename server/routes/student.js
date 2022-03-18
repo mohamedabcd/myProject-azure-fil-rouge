@@ -4,6 +4,8 @@ import student from '../models/students.js';
 
 const router = express.Router();
 
+
+
 router.get('/', getStudents);
 router.post('/', createStudent);
 router.delete('/:id', deleteStudent);
