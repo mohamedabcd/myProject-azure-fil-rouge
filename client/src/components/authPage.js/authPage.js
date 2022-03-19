@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import '../../assets/styles/authPage.css'
 
 function authPage() {
@@ -9,13 +10,13 @@ function authPage() {
         <h4>Home Auth</h4>
         <ul>
           <li>
-            <a href="/">Home</a>
+            <a href="home">Home</a>
           </li>
           <li>
-            <a href="/login">Login</a>
+           <Link to="/"><a href="login">Login</a></Link> 
           </li>
           <li>
-            <a href="/register">Register</a>
+            <Link to="/register"><a href="register">Register</a></Link>
           </li>
         </ul>
       </nav>
@@ -32,7 +33,7 @@ function authPage() {
             out within the larger container.
           </p>
           <p className="lead">
-            <a className="btn btn-primary btn-lg" href="#" role="button">
+            <a className="btn btn-primary btn-lg" href="button" role="button">
               Learn more
             </a>
           </p>
