@@ -2,3 +2,7 @@
 
 #.env file
 .env
+
+#config.json
+
+/config/config.json
