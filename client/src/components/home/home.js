@@ -14,10 +14,12 @@ function authPage() {
   return (
     <div className="container mt-4">
       <nav>
-        <h4>Home Auth</h4>
+        <h4>Home</h4>
         <ul>
           <li>
-            <a href="home">Home</a>
+            <Link to="/createpost">
+              <a href="createpost">createpost</a>
+            </Link>
           </li>
           <li>
             <Link to="/">
@@ -31,16 +33,16 @@ function authPage() {
           </li>
         </ul>
       </nav>
-      <div className="container mt-4">
+      <div className="container mt-4 ">
         
-        <div>
+        <div className="container-user">
           {listOfStudents.map((value, key) => {
             return (
-              <div class="card">
-                <img class="card-img-top" src="..." alt="Card image cap" />
+              <div class="card" key={value.id}>
+                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/07/02/04/48/user-6380868__340.png" alt="Card image cap" />
                 <div class="card-body">
                   <h5 class="card-title">{value.name}</h5>
-                  <p class="card-text">{value.description}</p>
+                  <p class="card-text card-description">{value.description}</p>
                   <p>{value.grade}</p>
                 </div>
               </div>

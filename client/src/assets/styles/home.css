@@ -27,3 +27,17 @@ nav li a{
 nav li a:hover{
     color:  #0E0F0F;
 }
+
+.container-user{
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.card-img-top {
+    width: 250px;
+}
+
+.card-description{
+    max-width: fit-content;
+}

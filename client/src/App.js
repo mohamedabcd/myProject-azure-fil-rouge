@@ -5,6 +5,7 @@ import Register from "./components/register/register";
 import Login from "./components/login/login"
 import User from "./components/user/user"
 import Home from "./components/home/home.js";
+import CreatePost from "./components/createPost/createPost.js";
 
 
 function App() {
@@ -12,6 +13,7 @@ function App() {
     <div className="container-lg ">
       <Routes>
         <Route exact path="/" element={<Home/>}/>
+        <Route path="/createpost" element={<CreatePost/>}/>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login/>}/>
         <Route path="/user/:id" element={<User/>}/>

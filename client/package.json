@@ -49,5 +49,8 @@
     ">0.2%",
     "not dead",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "webpack": "^5.70.0"
+  }
 }
