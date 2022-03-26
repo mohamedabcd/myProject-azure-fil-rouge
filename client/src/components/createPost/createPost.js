@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from 'yup';
 import axios from "axios";
-import { Link } from "react-router-dom";
 import "../../assets/styles/createPost.css";
 
 
 function createPost() {
+
+  let history = useNavigate();
 
   const initialValues = {
       name: "",
@@ -24,9 +25,11 @@ function createPost() {
 
   const onSubmit = (data) => {
     axios.post("http://localhost:5001/students", data).then((response) => {
-      console.log("Its worked !");;
+      history("/");
     });
   }
+
+  
   return (
     <div>
       <div>

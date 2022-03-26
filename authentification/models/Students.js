@@ -23,6 +23,12 @@ module.exports = (sequelize, DataTypes) => {
 
     })
 
+    Students.associate = (models) => {
+        Students.hasMany(models.Comments, {
+            onDelete: "cascade",
+        });
+    }
+
     return Students
 }
 

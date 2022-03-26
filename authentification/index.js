@@ -12,8 +12,11 @@ const cors = require('cors')
 app.use(cors());
 
 //Routers
-const postRouter = require('./routes/Students.js')
+const postRouter = require('./routes/Students.js');
 app.use("/students", postRouter);
+
+const commentsRouter = require('./routes/Comments.js');
+app.use("/comments", commentsRouter)
 
 db.sequelize.sync().then(() => {
   app.listen(5001, () => {

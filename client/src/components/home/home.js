@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../assets/styles/home.css";
 
 function authPage() {
   const [listOfStudents, setlistOfStudents] = useState([]);
+
+  let history = useNavigate();
 
   useEffect(() => {
     axios.get("http://localhost:5001/students").then((response) => {
@@ -31,6 +33,11 @@ function authPage() {
               <a href="register">Register</a>
             </Link>
           </li>
+          <li>
+            <Link to="/admin">
+              <a href="admin">Admin</a>
+            </Link>
+          </li>
         </ul>
       </nav>
       <div className="container mt-4 ">
@@ -38,7 +45,7 @@ function authPage() {
         <div className="container-user">
           {listOfStudents.map((value, key) => {
             return (
-              <div class="card" key={value.id}>
+              <div class="card" key={value.id} onClick={() => {history(`/user/${value.id}`)}}>
                 <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/07/02/04/48/user-6380868__340.png" alt="Card image cap" />
                 <div class="card-body">
                   <h5 class="card-title">{value.name}</h5>
