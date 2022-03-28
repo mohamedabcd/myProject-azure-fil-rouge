@@ -16,7 +16,10 @@ const postRouter = require('./routes/Students.js');
 app.use("/students", postRouter);
 
 const commentsRouter = require('./routes/Comments.js');
-app.use("/comments", commentsRouter)
+app.use("/comments", commentsRouter);
+
+const usersRouter = require('./routes/Users.js');
+app.use("/auth", usersRouter)
 
 db.sequelize.sync().then(() => {
   app.listen(5001, () => {

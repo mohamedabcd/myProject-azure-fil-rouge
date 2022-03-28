@@ -1,26 +1,39 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
-import { useForm } from "react-hook-form";
+import { AuthContext  } from "../../helpers/AuthContext";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import * as Yup from "yup";
 
 function login() {
-
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
+  const {setAuthState } = useContext(AuthContext)
 
-  const userLogin = () => {
-    axios.post("http://localhost:5002/users/login", {
-        name: name,
-        password: password,
-      })
-      .then(() => {
-        alert("User Logged");
 
-        // setShowAlert(true);
-      });
+  let history = useNavigate();
+
+  // const validationSchema = Yup.object().shape({
+  //   name: Yup.string().min(3).max(15).required("You must input a name"),
+  //   password: Yup.string().min(4).max(20).required(),
+
+  // });
+
+  const login = () => {
+    const data = { name: name, password: password };
+    axios.post("http://localhost:5001/auth/login", data).then((response) => {
+      if(response.data.error){
+        alert(response.data.error);
+      }else{
+        localStorage.setItem("accessToken", response.data);
+        setAuthState(true)
+        history("/")
+      }
+      
+    });
   };
   return (
-    <div className="container mt-4">
+    <div>
       <nav>
         <h4>Login</h4>
         <ul>
@@ -30,7 +43,9 @@ function login() {
             </Link>
           </li>
           <li>
-            <a href="login">Login</a>
+            <Link to="/register">
+              <a href="register">register</a>
+            </Link>
           </li>
           <li>
             <Link to="/admin">
@@ -39,50 +54,33 @@ function login() {
           </li>
         </ul>
       </nav>
-      <div className="container mt-12">
-        <div className="card">
-          <div className="card-header">Login Form</div>
-          <div className="card-body">
-            <form className="form-content-right">
-              <div className="mb-3">
-                <label for="name" className="form-label">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="name"
-                  name="name"
-                  placeholder="enter your name"
-                />
-              </div>
+      <div className="form-container">
+        <label>Name</label>
 
-              <div className="mb-3">
-                <label for="password" className="form-label">
-                  Password
-                </label>
-                <input
-                  type="password"
-                  className="form-control"
-                  id="password"
-                  name="password"
-                  placeholder="enter your password"
-                  onChange={(e) => {
-                    setPassword(e.target.value);
-                  }}
-                />
-              </div>
+        <input
+          className="form-control"
+          
+          placeholder="your name"
+          type="text"
+          onChange={(e) => {
+            setName(e.target.value);
+          }}
+        />
+        <label>Password</label>
 
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={userLogin}
-              >
-                Login
-              </button>
-            </form>
-          </div>
-        </div>
+        <input
+          className="form-control"
+          type="password"
+          
+          placeholder="your password"
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
+        />
+
+        <button type="submit" onClick={login} className="btn btn-primary">
+          Login
+        </button>
       </div>
     </div>
   );

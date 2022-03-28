@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../../assets/styles/home.css";
 
+
 function authPage() {
   const [listOfStudents, setlistOfStudents] = useState([]);
 
@@ -14,7 +15,7 @@ function authPage() {
     });
   }, []);
   return (
-    <div className="container mt-4">
+    <div >
       <nav>
         <h4>Home</h4>
         <ul>
@@ -23,16 +24,21 @@ function authPage() {
               <a href="createpost">createpost</a>
             </Link>
           </li>
-          <li>
-            <Link to="/">
-              <a href="login">Login</a>
-            </Link>
-          </li>
-          <li>
-            <Link to="/register">
-              <a href="register">Register</a>
-            </Link>
-          </li>
+          {!localStorage.getItem("accessToken") && (
+            <>
+              <li>
+                <Link to="/login">
+                  <a href="login">Login</a>
+                </Link>
+              </li>
+              <li>
+                <Link to="/register">
+                  <a href="register">Register</a>
+                </Link>
+              </li>
+            </>
+          )}
+
           <li>
             <Link to="/admin">
               <a href="admin">Admin</a>
@@ -41,12 +47,21 @@ function authPage() {
         </ul>
       </nav>
       <div className="container mt-4 ">
-        
         <div className="container-user">
           {listOfStudents.map((value, key) => {
             return (
-              <div class="card" key={value.id} onClick={() => {history(`/user/${value.id}`)}}>
-                <img class="card-img-top" src="https://cdn.pixabay.com/photo/2021/07/02/04/48/user-6380868__340.png" alt="Card image cap" />
+              <div
+                class="card"
+                key={value.id}
+                onClick={() => {
+                  history(`/user/${value.id}`);
+                }}
+              >
+                <img
+                  class="card-img-top"
+                  src="https://cdn.pixabay.com/photo/2021/07/02/04/48/user-6380868__340.png"
+                  alt="Card image cap"
+                />
                 <div class="card-body">
                   <h5 class="card-title">{value.name}</h5>
                   <p class="card-text card-description">{value.description}</p>

@@ -1,5 +1,5 @@
 module.exports = (sequelize, DataTypes) => {
-    const Students = sequelize.define("Students", {
+    const Users = sequelize.define("Users", {
         name: {
             type: DataTypes.STRING,
             allowNull: false,
@@ -7,29 +7,27 @@ module.exports = (sequelize, DataTypes) => {
 
         },
 
-        description: {
+        password: {
             type: DataTypes.STRING,
             allowNull: false,
 
 
         },
-        grade: {
-            type: DataTypes.STRING,
+        isAdmin: {
+            type: DataTypes.BOOLEAN,
             allowNull: false,
 
 
         },
-
 
     })
 
-    Students.associate = (models) => {
-        Students.hasMany(models.Comments, {
+    Users.associate = (models) => {
+        Users.hasMany(models.Comments, {
             onDelete: "cascade",
-            
         });
     }
 
-    return Students
+    return Users;
 }
 
