@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import "../../assets/styles/home.css";
+import Dashboard from "../dashboard/dashboard.js";
 
+import "../../assets/styles/home.css";
 
 function authPage() {
   const [listOfStudents, setlistOfStudents] = useState([]);
@@ -14,17 +15,14 @@ function authPage() {
       setlistOfStudents(response.data);
     });
   }, []);
+
   return (
-    <div >
+    <div>
       <nav>
         <h4>Home</h4>
+
         <ul>
-          <li>
-            <Link to="/createpost">
-              <a href="createpost">createpost</a>
-            </Link>
-          </li>
-          {!localStorage.getItem("accessToken") && (
+          {!localStorage.getItem("accessToken")  ? (
             <>
               <li>
                 <Link to="/login">
@@ -37,13 +35,19 @@ function authPage() {
                 </Link>
               </li>
             </>
-          )}
-
-          <li>
-            <Link to="/admin">
-              <a href="admin">Admin</a>
-            </Link>
-          </li>
+            ): ( <>
+            {/* <li>
+              <Link to="/admin">
+                <a href="admin">Admin</a>
+              </Link>
+            </li> */}
+            <li>
+              <Link to="/createpost">
+                <a href="createpost">createpost</a>
+              </Link>
+            </li></>)
+          }
+          
         </ul>
       </nav>
       <div className="container mt-4 ">

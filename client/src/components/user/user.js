@@ -56,9 +56,9 @@ function user() {
             <a href="login">Login</a>
           </li> */}
           <li>
-            <Link to="/admin">
+            {/* <Link to="/admin">
               <a href="admin">Admin</a>
-            </Link>
+            </Link> */}
           </li>
         </ul>
       </nav>

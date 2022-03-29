@@ -3,11 +3,14 @@ import { Link } from "react-router-dom";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
 import Student from "../showStudent/showStudent.js";
 import CreateStudent from "../createStudent/createStudent.js";
+
 // import '../home/App.css';
 import makeStyles from "../../styles";
 
 function Home() {
   const classes = makeStyles();
+
+  
   return (
     <>
       <div className="container mt-4">
@@ -17,12 +20,7 @@ function Home() {
             <li>
               <Link to="/"><a href="home">Home</a></Link>
             </li>
-            <li>
-              <Link to="/register"><a href="register">Register</a></Link>
-            </li>
-            <li>
-              <a href="/register">Register</a>
-            </li>
+            
           </ul>
         </nav>
       </div>

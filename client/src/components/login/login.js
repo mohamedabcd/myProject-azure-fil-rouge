@@ -2,13 +2,14 @@ import React, { useEffect, useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { AuthContext  } from "../../helpers/AuthContext";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+
 
 function login() {
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-  const {setAuthState } = useContext(AuthContext)
+  const {setAuthState } = useContext(AuthContext);
+  
+  
 
 
   let history = useNavigate();
@@ -24,6 +25,10 @@ function login() {
     axios.post("http://localhost:5001/auth/login", data).then((response) => {
       if(response.data.error){
         alert(response.data.error);
+      }else if(name== "admin3" ){
+        localStorage.setItem("accessToken", response.data);
+        setAuthState(true)
+        history("/admin")
       }else{
         localStorage.setItem("accessToken", response.data);
         setAuthState(true)
@@ -42,7 +47,7 @@ function login() {
               <a href="home">Home</a>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/register">
               <a href="register">register</a>
             </Link>
@@ -51,7 +56,9 @@ function login() {
             <Link to="/admin">
               <a href="admin">Admin</a>
             </Link>
-          </li>
+
+          </li> */}
+          
         </ul>
       </nav>
       <div className="form-container">
