@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": false,
-  "homepage": ".",
+  "homepage": "https://front-react-fil-rouge.azurewebsites.net",
   "dependencies": {
     "@emotion/react": "^11.8.1",
     "@emotion/styled": "^11.8.1",
