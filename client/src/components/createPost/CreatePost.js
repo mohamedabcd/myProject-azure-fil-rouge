@@ -6,7 +6,7 @@ import axios from "axios";
 import "../../assets/styles/createPost.css";
 
 
-function createPost() {
+function CreatePost() {
 
   let history = useNavigate();
 
@@ -83,4 +83,4 @@ function createPost() {
   );
 }
 
-export default createPost;
+export default CreatePost;

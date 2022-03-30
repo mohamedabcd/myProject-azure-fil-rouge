@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import "../../assets/styles/user.css";
 
-function user() {
+function User() {
   let { id } = useParams();
   const [studentObject, setSudentObject] = useState({});
   const [comments, setComments] = useState([]);
@@ -107,4 +107,4 @@ function user() {
   );
 }
 
-export default user;
+export default User;

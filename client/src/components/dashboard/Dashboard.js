@@ -1,8 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { Container, AppBar, Typography, Grow, Grid } from "@material-ui/core";
-import Student from "../showStudent/showStudent.js";
-import CreateStudent from "../createStudent/createStudent.js";
+import Student from "../showStudent/ShowStudent.js";
+import CreateStudent from "../createStudent/CreateStudent.js";
 
 // import '../home/App.css';
 import makeStyles from "../../styles";

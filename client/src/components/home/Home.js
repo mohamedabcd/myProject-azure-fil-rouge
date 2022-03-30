@@ -1,14 +1,18 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
-import Dashboard from "../dashboard/dashboard.js";
+
+import { AuthContext } from '../../helpers/AuthContext.js';
 
 import "../../assets/styles/home.css";
 
-function authPage() {
+function Home() {
   const [listOfStudents, setlistOfStudents] = useState([]);
-
+  const [authState, setAuthState] = useState(false);
   let history = useNavigate();
+
+
+
 
   useEffect(() => {
     axios.get("http://localhost:5001/students").then((response) => {
@@ -16,13 +20,40 @@ function authPage() {
     });
   }, []);
 
+  
+
+  useEffect(() => {
+    axios.get("http://localhost:5001/auth/auth",{
+      headers: {
+        accessToken: localStorage.getItem("accessToken")
+      }
+    }).then((response) => {
+      if (response.data.error) {
+        setAuthState(false)
+      } else {
+         setAuthState(true);
+      }
+    })
+     
+    
+  }, [])
+
+
+  const logout = () => {
+    localStorage.removeItem("acessToken");
+    setAuthState(false)
+  }
+  
+
   return (
     <div>
-      <nav>
+      <nav className="mynav">
         <h4>Home</h4>
-
+        <AuthContext.Provider value={{authState, setAuthState}}>
         <ul>
-          {!localStorage.getItem("accessToken")  ? (
+
+        {/* !localStorage.getItem("accessToken") &&   a mettre ca devant si cela ne marche pas*/}
+          {  !authState  ? (
             <>
               <li>
                 <Link to="/login">
@@ -41,14 +72,21 @@ function authPage() {
                 <a href="admin">Admin</a>
               </Link>
             </li> */}
+
             <li>
               <Link to="/createpost">
-                <a href="createpost">createpost</a>
+                <a href="createpost">CreateAPost</a>
               </Link>
-            </li></>)
+            </li>
+            <button className="btn" onClick={logout}>Logout</button>
+            
+            </>
+            
+            )
           }
           
         </ul>
+        </AuthContext.Provider>
       </nav>
       <div className="container mt-4 ">
         <div className="container-user">
@@ -80,4 +118,4 @@ function authPage() {
   );
 }
 
-export default authPage;
+export default Home;

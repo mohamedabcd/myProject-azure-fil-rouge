@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import Dashboard from "./components/dashboard/dashboard.js";
-import Register from "./components/register/register";
-import Login from "./components/login/login";
-import User from "./components/user/user";
-import Home from "./components/home/home.js";
-import CreatePost from "./components/createPost/createPost.js";
-import ButtonLoginOut from "./components/buttonLoginOut/buttonLoginOut.js";
+import Dashboard from "./components/dashboard/Dashboard.js";
+import Register from "./components/register/Register";
+import Login from "./components/login/Login";
+import User from "./components/user/User";
+import Home from "./components/home/Home.js";
+import CreatePost from "./components/createPost/CreatePost.js";
+
 import { AuthContext } from "./helpers/AuthContext.js";
 import axios from 'axios';
 
@@ -39,7 +39,7 @@ function App() {
   return (
     <div className="container-lg ">
       
-      <AuthContext.Provider value={{authState, setAuthState}}>
+      
         <Routes>
           <Route  path="/" element={<Home />} />
           <Route path="/createpost" element={<CreatePost />} />
@@ -56,7 +56,7 @@ function App() {
           <Route path="/user/:id" element={<User />} />
           <Route path="/admin" element={<Dashboard />} />
         </Routes>
-      </AuthContext.Provider>
+    
     </div>
   );
 }
