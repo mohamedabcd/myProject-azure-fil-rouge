@@ -15,13 +15,13 @@ steps:
     targetType: 'inline'
     script: 'ls'
 
-- task: NodeTool@0
+- task: AzureRmWebAppDeployment@4
   inputs:
-    versionSpec: '10.x'
-  displayName: 'Install Node.js'
-
-- script: |
-    cd client && npm --version
-  displayName: 'npm install and build'
-
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'service-connection-azure-farouk'
+    appType: 'webAppLinux'
+    WebAppName: 'react-dashboard-front-farouk'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/client/build'
+    RuntimeStack: 'NODE|16-lts'
+    StartupCommand: 'npm start'
 
