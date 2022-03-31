@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'react-dashboard-front-farouk'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B47CD2A198B548E18D4797CD3C3EF3AE }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_6278C0D4EA08434F8A11027859CFDC6A }}
           package: .
