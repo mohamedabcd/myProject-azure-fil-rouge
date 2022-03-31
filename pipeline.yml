@@ -14,20 +14,14 @@ steps:
   inputs:
     targetType: 'inline'
     script: 'ls'
-- task: ArchiveFiles@2
+
+- task: NodeTool@0
   inputs:
-    rootFolderOrFile: '$(Build.BinariesDirectory)/client'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'service-connection-azure-farouk'
-    appType: 'webAppLinux'
-    WebAppName: 'react-dashboard-front-farouk'
-    packageForLinux: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    RuntimeStack: 'NODE|16-lts'
-    StartupCommand: 'npm start'
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- script: |
+    cd client && npm --version
+  displayName: 'npm install and build'
+
 
