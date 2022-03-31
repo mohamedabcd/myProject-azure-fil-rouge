@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
-import { AuthContext } from '../../helpers/AuthContext.js';
+import { AuthContext } from "../../helpers/AuthContext.js";
 
 import "../../assets/styles/home.css";
 
@@ -11,81 +11,72 @@ function Home() {
   const [authState, setAuthState] = useState(false);
   let history = useNavigate();
 
-
-
-
   useEffect(() => {
     axios.get("http://localhost:5001/students").then((response) => {
       setlistOfStudents(response.data);
     });
   }, []);
 
-  
-
   useEffect(() => {
-    axios.get("http://localhost:5001/auth/auth",{
-      headers: {
-        accessToken: localStorage.getItem("accessToken")
-      }
-    }).then((response) => {
-      if (response.data.error) {
-        setAuthState(false)
-      } else {
-         setAuthState(true);
-      }
-    })
-     
-    
-  }, [])
-
+    axios
+      .get("http://localhost:5001/auth/auth", {
+        headers: {
+          accessToken: localStorage.getItem("accessToken"),
+        },
+      })
+      .then((response) => {
+        if (response.data.error) {
+          setAuthState(false);
+        } else {
+          setAuthState(true);
+        }
+      });
+  }, []);
 
   const logout = () => {
     localStorage.removeItem("acessToken");
-    setAuthState(false)
-  }
-  
+    setAuthState(false);
+  };
 
   return (
     <div>
       <nav className="mynav">
         <h4>Home</h4>
-        <AuthContext.Provider value={{authState, setAuthState}}>
-        <ul>
-
-        {/* !localStorage.getItem("accessToken") &&   a mettre ca devant si cela ne marche pas*/}
-          {  !authState  ? (
-            <>
-              <li>
-                <Link to="/login">
-                  <a href="login">Login</a>
-                </Link>
-              </li>
-              <li>
-                <Link to="/register">
-                  <a href="register">Register</a>
-                </Link>
-              </li>
-            </>
-            ): ( <>
-            {/* <li>
+        <AuthContext.Provider value={{ authState, setAuthState }}>
+          <ul>
+            {/* !localStorage.getItem("accessToken") &&   a mettre ca devant si cela ne marche pas*/}
+            {!authState ? (
+              <>
+                <li>
+                  <Link to="/login">
+                    <a href="login">Login</a>
+                  </Link>
+                </li>
+                <li>
+                  <Link to="/register">
+                    <a href="register">Register</a>
+                  </Link>
+                </li>
+              </>
+            ) : (
+              <>
+                {/* <li>
               <Link to="/admin">
                 <a href="admin">Admin</a>
               </Link>
             </li> */}
 
-            <li>
-              <Link to="/createpost">
-                <a href="createpost">CreateAPost</a>
-              </Link>
-            </li>
-            <button className="btn" onClick={logout}>Logout</button>
-            
-            </>
-            
-            )
-          }
-          
-        </ul>
+                <li>
+                  <Link to="/createpost">
+                    <a href="createpost">CreateAPost</a>
+                  </Link>
+                </li>
+                <button className="btn" onClick={logout}>
+                  Logout
+                </button>
+              </>
+            )}
+          </ul>
         </AuthContext.Provider>
       </nav>
       <div className="container mt-4 ">
