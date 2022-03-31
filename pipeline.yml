@@ -12,7 +12,8 @@ pool:
 steps:
 - task: Bash@3
   inputs:
-    arguments: 'ls'
+    targetType: 'inline'
+    script: 'ls'
 
 - task: NodeTool@0
   inputs:
