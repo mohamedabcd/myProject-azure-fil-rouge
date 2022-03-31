@@ -12,7 +12,7 @@ pool:
 steps:
 - task: Bash@3
   inputs:
-    filePath: 'ls'
+    arguments: 'ls'
 
 - task: NodeTool@0
   inputs:
