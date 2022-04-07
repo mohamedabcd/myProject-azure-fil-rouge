@@ -3,7 +3,7 @@
 # Add steps that analyze code, save build artifacts, deploy, and more:
 # https://docs.microsoft.com/azure/devops/pipelines/languages/javascript
 variables:
-  uiSource : 'server'
+  uiSource : 'authentification'
   uiBuild : $(uiSource)/build
 
 trigger:
@@ -24,7 +24,7 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd server && npm --version
+    cd authentification && npm --version
   displayName: 'npm install and build'
 - task: Bash@3
   inputs:
@@ -35,8 +35,8 @@ steps:
       echo '--------------Build.BinariesDirectory-------------'
       echo $(Build.BinariesDirectory)
       ls
-      cd server
-      echo 'inside server'
+      cd authentification
+      echo 'inside authentification'
       ls
       cd build
       echo 'inside build'
@@ -45,26 +45,26 @@ steps:
       echo '--------------Build.SourcesDirectory-------------'
       echo $(Build.SourcesDirectory)
       ls
-      cd server
-      echo 'inside server------'
+      cd authentification
+      echo 'inside authentification------'
       ls
       echo 'inside build'
       cd build
       echo '--------------Build.ArtifactStagingDirectory-------------'
       echo $(Build.ArtifactStagingDirectory)
       ls
-      cd server
-      echo 'inside server'
+      cd authentification
+      echo 'inside authentification'
       ls   
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(uiBuild)'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/server/build/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/authentification/build/$(Build.BuildId).zip'
     replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/server/build'
+      PathtoPublish: '$(Build.ArtifactStagingDirectory)/authentification/build'
 
 
