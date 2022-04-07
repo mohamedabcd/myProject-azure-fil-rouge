@@ -25,7 +25,7 @@ steps:
 
 - script: |
     cd authentification && npm --version
-  displayName: 'npm install and build'
+  displayName: 'npm install and npm run build'
 - task: Bash@3
   inputs:
     targetType: 'inline'
