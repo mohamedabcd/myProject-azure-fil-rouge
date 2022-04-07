@@ -24,8 +24,38 @@ steps:
   displayName: 'Install Node.js'
 
 - script: |
-    cd client && npm --version
+    cd server && npm --version
   displayName: 'npm install and build'
+- task: Bash@3
+  inputs:
+    targetType: 'inline'
+    script: |
+      echo '--------------cd-------------'
+      ls
+      echo '--------------Build.BinariesDirectory-------------'
+      echo $(Build.BinariesDirectory)
+      ls
+      cd server
+      echo 'inside server'
+      ls
+      cd build
+      echo 'inside build'
+      ls
+
+      echo '--------------Build.SourcesDirectory-------------'
+      echo $(Build.SourcesDirectory)
+      ls
+      cd server
+      echo 'inside server------'
+      ls
+      echo 'inside build'
+      cd build
+      echo '--------------Build.ArtifactStagingDirectory-------------'
+      echo $(Build.ArtifactStagingDirectory)
+      ls
+      cd server
+      echo 'inside server'
+      ls   
 - task: ArchiveFiles@2
   inputs:
     rootFolderOrFile: '$(uiBuild)'
