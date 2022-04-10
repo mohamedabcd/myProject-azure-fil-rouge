@@ -25,6 +25,7 @@ steps:
 
 - script: |
     cd authentification && npm --version
+    npm install
   displayName: 'npm install and npm run build'
 - task: Bash@3
   inputs:
@@ -60,13 +61,15 @@ steps:
       ls   
 - task: ArchiveFiles@2
   inputs:
-    rootFolderOrFile: '$(uiBuild)'
+    rootFolderOrFile: '$(uiSource)'
     includeRootFolder: false
     archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/authentification/build/$(Build.BuildId).zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/authentification/$(Build.BuildId).zip'
     replaceExistingArchive: true
 - task: PublishBuildArtifacts@1
   inputs:
-      PathtoPublish: '$(Build.ArtifactStagingDirectory)/authentification/build'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/authentification/'
+    ArtifactName: 'drop'
+    publishLocation: 'Container'
 
 
